@@ -184,44 +184,41 @@ const PiecesList: React.FC = () => {
     tipo: "BASE",
   });
 
-  // 1) Cálculo de la sumatoria de metros cuadrados (ancho * largo) sin reduce
 
   // const sumatiriaAnchos = pieces.map((piece) => Number(piece.ancho));
   // const sumatiriaLargo = pieces.map((piece) => Number(piece.largo));
 
   // let sumatiriaMetrosCuadrados = 0;
 
-  // //Itero a traves de lso arrays asi voy acumulando los numeros
   // for (let i = 0; i < sumatiriaAnchos.length; i++) {
   //   sumatiriaMetrosCuadrados += sumatiriaAnchos[i] * sumatiriaLargo[i];
   // }
 
   //A mededia que recorro las piezas voy obteneindo los datos para asi multiplicarlos y sumarlos al total (mas eficiente)
-  let sumatiriaMetrosCuadrados2 = 0;
+  let sumatoriaMetrosCuadrados2 = 0;
   for (let i = 0; i < pieces.length; i++) {
     const a = Number(pieces[i].ancho);
     const l = Number(pieces[i].largo);
     if (!isNaN(a) && !isNaN(l)) {
-      sumatiriaMetrosCuadrados2 += a * l;
+      sumatoriaMetrosCuadrados2 += a * l;
     }
   }
 
-  // 2) Función para manejar cambios en el selector de filtro
+  // Función para manejar cambios en el selector de filtro
   const filtro = (e: ChangeEvent<HTMLSelectElement>) => {
     setFilterType(e.target.value as any);
   };
 
-  // 3) Filtrar piezas según el tipo seleccionado
+  //Filtrar piezas según el tipo seleccionado
   const piezasFiltradas =
     filterType === "ALL" ? pieces : pieces.filter((p) => p.tipo === filterType);
 
-  // 4) Manejo de cambios en el formulario
+  //Manejo de cambios en el formulario
   function handleInputChange(
     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) {
     const campo = e.target.name;
     const valor = e.target.value;
-    console.log("cambio en:", campo, "->", valor);
     const copiaForm: any = {
       name: formData.name,
       material: formData.material,
@@ -243,7 +240,7 @@ const PiecesList: React.FC = () => {
     setFormData(copiaForm);
   }
 
-  // 5) Validación simple del formulario
+  //Validación simple del formulario
   function validarDatos(): boolean {
     let isValid = true;
 
@@ -293,7 +290,7 @@ const PiecesList: React.FC = () => {
     return isValid;
   }
 
-  // 6) Manejo del submit del formulario
+  // Manejo del submit del formulario
   const agregaPieza = (e: FormEvent) => {
     e.preventDefault();
 
@@ -308,11 +305,11 @@ const PiecesList: React.FC = () => {
 
   return (
     <div>
-      {/* Mostrar suma de metros cuadrados */}
+      
 
       <h1>Despiece</h1>
 
-      {/* Selector para filtrar por tipo */}
+
       <div>
         <label>
           Filtro
@@ -325,7 +322,7 @@ const PiecesList: React.FC = () => {
         </label>
       </div>
 
-      <p>Sumatoria de metros cuadrados: {sumatiriaMetrosCuadrados2}</p>
+      <p>Sumatoria de metros cuadrados: {sumatoriaMetrosCuadrados2}</p>
 
       {/* Tabla de piezas */}
       <table>
