@@ -4,13 +4,13 @@ import React, { useState, FormEvent, ChangeEvent } from "react";
 type Piece = {
   name: string;
   material: string;
-  ancho: string; // se guardan como strings para mantener el formato original
+  ancho: string;
   largo: string;
   tipo: "BASE" | "CAJON" | "PUERTA";
 };
 
 // Datos iniciales de piezas
-const initialPieces: Piece[] = [
+const Pieces: Piece[] = [
   {
     name: "C/F Cajon 1026",
     material: "Blanco MDF",
@@ -169,12 +169,13 @@ const initialPieces: Piece[] = [
 
 const PiecesList: React.FC = () => {
   // Estado para la lista de piezas
-  const [pieces, setPieces] = useState<Piece[]>(initialPieces);
+  const [pieces, setPieces] = useState<Piece[]>(Pieces);
+
   // Estado para filtrar por tipo: 'ALL' muestra todos
   const [filterType, setFilterType] = useState<
     "ALL" | "BASE" | "CAJON" | "PUERTA"
   >("ALL");
-  // Estado para el formulario de nueva pieza
+
   const [formData, setFormData] = useState<Piece>({
     name: "",
     material: "",
@@ -182,10 +183,6 @@ const PiecesList: React.FC = () => {
     largo: "",
     tipo: "BASE",
   });
-  // Estado para mensajes de error de validación
-  const [errors, setErrors] = useState<Partial<Record<keyof Piece, string>>>(
-    {}
-  );
 
   // 1) Cálculo de la sumatoria de metros cuadrados (ancho * largo) sin reduce
 
@@ -219,10 +216,12 @@ const PiecesList: React.FC = () => {
     filterType === "ALL" ? pieces : pieces.filter((p) => p.tipo === filterType);
 
   // 4) Manejo de cambios en el formulario
-  function handleInputChange(e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) {
+  function handleInputChange(
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) {
     const campo = e.target.name;
     const valor = e.target.value;
-    console.log('cambio en:', campo, '->', valor);
+    console.log("cambio en:", campo, "->", valor);
     const copiaForm: any = {
       name: formData.name,
       material: formData.material,
@@ -230,15 +229,15 @@ const PiecesList: React.FC = () => {
       largo: formData.largo,
       tipo: formData.tipo,
     };
-    if (campo === 'name') {
+    if (campo === "name") {
       copiaForm.name = valor;
-    } else if (campo === 'material') {
+    } else if (campo === "material") {
       copiaForm.material = valor;
-    } else if (campo === 'ancho') {
+    } else if (campo === "ancho") {
       copiaForm.ancho = valor;
-    } else if (campo === 'largo') {
+    } else if (campo === "largo") {
       copiaForm.largo = valor;
-    } else if (campo === 'tipo') {
+    } else if (campo === "tipo") {
       copiaForm.tipo = valor;
     }
     setFormData(copiaForm);
@@ -247,48 +246,50 @@ const PiecesList: React.FC = () => {
   // 5) Validación simple del formulario
   function validarDatos(): boolean {
     let isValid = true;
-    const newErrors: Partial<Record<keyof Piece, string>> = {};
 
     if (!formData.name) {
-      newErrors.name = 'Nombre es requerido';
+      alert("Nombre es requerido");
       isValid = false;
     }
     if (!formData.material) {
-      newErrors.material = 'Material es requerido';
+      alert("Material es requerido");
       isValid = false;
     }
 
     // Ancho
-    if (formData.ancho === '') {
-      newErrors.ancho = 'Ancho es requerido';
+    if (formData.ancho === "") {
+      alert("Ancho es requerido");
       isValid = false;
     } else if (isNaN(Number(formData.ancho))) {
-      newErrors.ancho = 'Ancho debe ser número';
+      alert("Ancho debe ser número");
       isValid = false;
     } else if (Number(formData.ancho) <= 0) {
-      newErrors.ancho = 'Ancho debe ser mayor a 0';
+      alert("Ancho debe ser mayor a 0");
       isValid = false;
     }
 
     // Largo
-    if (formData.largo === '') {
-      newErrors.largo = 'Largo es requerido';
+    if (formData.largo === "") {
+      alert("Largo es requerido");
       isValid = false;
     } else if (isNaN(Number(formData.largo))) {
-      newErrors.largo = 'Largo debe ser número';
+      alert("Largo debe ser número");
       isValid = false;
     } else if (Number(formData.largo) <= 0) {
-      newErrors.largo = 'Largo debe ser mayor a 0';
+      alert("Largo debe ser mayor a 0");
       isValid = false;
     }
 
     // Tipo
-    if (formData.tipo !== 'BASE' && formData.tipo !== 'CAJON' && formData.tipo !== 'PUERTA') {
-      newErrors.tipo = 'Tipo es requerido';
+    if (
+      formData.tipo !== "BASE" &&
+      formData.tipo !== "CAJON" &&
+      formData.tipo !== "PUERTA"
+    ) {
+      alert("Tipo es requerido");
       isValid = false;
     }
 
-    setErrors(newErrors);
     return isValid;
   }
 
@@ -303,18 +304,16 @@ const PiecesList: React.FC = () => {
 
     // Formaeto los datos
     setFormData({ name: "", material: "", ancho: "", largo: "", tipo: "BASE" });
-    setErrors({});
   };
 
   return (
-    <div >
+    <div>
       {/* Mostrar suma de metros cuadrados */}
-      
 
       <h1>Despiece</h1>
 
       {/* Selector para filtrar por tipo */}
-      <div >
+      <div>
         <label>
           Filtro
           <select value={filterType} onChange={filtro}>
@@ -326,9 +325,7 @@ const PiecesList: React.FC = () => {
         </label>
       </div>
 
-      <p>
-        Sumatoria de metros cuadrados: {sumatiriaMetrosCuadrados2} 
-      </p>
+      <p>Sumatoria de metros cuadrados: {sumatiriaMetrosCuadrados2}</p>
 
       {/* Tabla de piezas */}
       <table>
@@ -357,10 +354,8 @@ const PiecesList: React.FC = () => {
         </tbody>
       </table>
 
-         {/* Formulario para agregar nueva pieza */}
-         <form
-        onSubmit={agregaPieza}
-      >
+      {/* Formulario para agregar nueva pieza */}
+      <form onSubmit={agregaPieza}>
         <h2>Añadir nueva pieza</h2>
         <div>
           <label>
@@ -371,7 +366,6 @@ const PiecesList: React.FC = () => {
               onChange={handleInputChange}
             />
           </label>
-          {errors.name && <span> {errors.name}</span>}
         </div>
         <div>
           <label>
@@ -382,9 +376,6 @@ const PiecesList: React.FC = () => {
               onChange={handleInputChange}
             />
           </label>
-          {errors.material && (
-            <span > {errors.material}</span>
-          )}
         </div>
         <div>
           <label>
@@ -395,9 +386,6 @@ const PiecesList: React.FC = () => {
               onChange={handleInputChange}
             />
           </label>
-          {errors.ancho && (
-            <span> {errors.ancho}</span>
-          )}
         </div>
         <div>
           <label>
@@ -408,9 +396,6 @@ const PiecesList: React.FC = () => {
               onChange={handleInputChange}
             />
           </label>
-          {errors.largo && (
-            <span> {errors.largo}</span>
-          )}
         </div>
         <div>
           <label>
@@ -425,11 +410,8 @@ const PiecesList: React.FC = () => {
               <option value="PUERTA">Puerta</option>
             </select>
           </label>
-          {errors.tipo  ? <span> {errors.tipo}</span> : ""}
         </div>
-        <button type="submit">
-          Añadir pieza
-        </button>
+        <button type="submit">Añadir pieza</button>
       </form>
     </div>
   );
