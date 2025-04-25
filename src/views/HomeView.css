@@ -1,0 +1,11 @@
+.container {
+  margin: auto;
+  width: 90%;
+  max-width: 1200px;
+}
+
+.home-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+} 

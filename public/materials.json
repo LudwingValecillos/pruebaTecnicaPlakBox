@@ -1,0 +1,121 @@
+{
+  "materials": [
+    {
+      "name": "Blanco MDF",
+      "id": 1,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/blanco mdf/textura1"
+    },
+    {
+      "name": "Negro MDF",
+      "id": 4,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/negro mdf/textura1"
+    },
+    {
+      "name": "Blanco fibro plus 3mm",
+      "id": 38,
+      "price": 100,
+      "espesor": 3,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/blanco fibro plus 3mm/textura1"
+    },
+    {
+      "name": "Blanco AGLO",
+      "id": 121,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1830,
+      "largo": 2750,
+      "textura": "https://app.plakbox.com/server/textures/blanco aglo/textura1"
+    },
+    {
+      "name": "OSB 18",
+      "id": 215,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/osb 18/textura1"
+    },
+    {
+      "name": "Barral Cromado",
+      "id": 228,
+      "price": 100,
+      "espesor": 34,
+      "ancho": 25,
+      "largo": 3000,
+      "textura": "https://app.plakbox.com/server/textures/barral cromado/textura1"
+    },
+    {
+      "name": "Color Veta Aglo",
+      "id": 241,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1830,
+      "largo": 2750,
+      "textura": "https://app.plakbox.com/server/textures/color veta aglo/textura1"
+    },
+    {
+      "name": "NO VA 2",
+      "id": 255,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/no va granito negro/textura1"
+    },
+    {
+      "name": "No va Granito negro",
+      "id": 264,
+      "price": 100,
+      "espesor": 20,
+      "ancho": 620,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/no va granito negro/textura1"
+    },
+    {
+      "name": "pared balnca2",
+      "id": 277,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/pared balnca2/textura1"
+    },
+    {
+      "name": "paredladrilloblanco",
+      "id": 278,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/pared ladrillo/textura1"
+    },
+    {
+      "name": "Pared Ladrillo",
+      "id": 292,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1220,
+      "largo": 2440,
+      "textura": "https://app.plakbox.com/server/textures/pared ladrillo/textura1"
+    },
+    {
+      "name": "Piso Madera clara",
+      "id": 293,
+      "price": 100,
+      "espesor": 18,
+      "ancho": 1800,
+      "largo": 2000,
+      "textura": "https://app.plakbox.com/server/textures/piso madera clara/textura1"
+    }
+  ]
+}
